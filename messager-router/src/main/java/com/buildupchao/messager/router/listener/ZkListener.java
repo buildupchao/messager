@@ -1,6 +1,8 @@
 package com.buildupchao.messager.router.listener;
 
 import com.buildupchao.messager.router.kit.ServerRouteListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +14,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class ZkListener implements CommandLineRunner {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ZkListener.class);
+
     @Override
     public void run(String... strings) throws Exception {
         Thread zkListener = new Thread(new ServerRouteListener());
         zkListener.setName("zk-listener");
         zkListener.start();
+        LOGGER.info("Start zookeeper listener");
     }
 }
