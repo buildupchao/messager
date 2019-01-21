@@ -78,6 +78,7 @@ public class MessagerRouterController {
         Long userId = System.currentTimeMillis();
         RegisterResVO registerResInfo = new RegisterResVO();
         registerResInfo.setUserId(userId);
+        registerReqInfo.setUserName(registerReqInfo.getUserName());
         registerResInfo = accountService.register(registerResInfo);
 
         return ResponseHelper.createSuccess(registerResInfo);
