@@ -11,6 +11,7 @@
         <module>messager-common</module>
         <module>messager-server</module>
         <module>messager-router</module>
+        <module>messager-client</module>
     </modules>
     <packaging>pom</packaging>
 
