@@ -90,7 +90,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void saveRouteInfo(LoginReqVO loginReqVO, String routeInfo) throws Exception {
-        String key = ROUTE_PREFIX + loginReqVO;
+        String key = ROUTE_PREFIX + loginReqVO.getUserId();
         redisTemplate.opsForValue().set(key, routeInfo);
     }
 

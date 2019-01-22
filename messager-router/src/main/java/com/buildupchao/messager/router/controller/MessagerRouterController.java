@@ -93,6 +93,8 @@ public class MessagerRouterController {
             MessagerServerInfoVO messagerServerInfo = MessagerServerInfoVO.builder()
                     .host(serverInfos[0]).zkPort(Integer.parseInt(serverInfos[1])).httpPort(Integer.parseInt(serverInfos[2]))
                     .build();
+            accountService.saveRouteInfo(loginReqInfo, server);
+
             return ResponseHelper.createSuccess(messagerServerInfo);
         }
         return ResponseHelper.createSuccess();
