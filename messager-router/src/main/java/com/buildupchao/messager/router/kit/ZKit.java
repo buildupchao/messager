@@ -1,6 +1,7 @@
 package com.buildupchao.messager.router.kit;
 
 import com.alibaba.fastjson.JSON;
+import com.buildupchao.messager.router.cache.ServerRouteCache;
 import com.buildupchao.messager.router.config.AppConfiguration;
 import org.I0Itec.zkclient.IZkChildListener;
 import org.I0Itec.zkclient.ZkClient;
@@ -27,12 +28,14 @@ public class ZKit {
     @Autowired
     private ZkClient zkClient;
 
+    @Autowired
+    private ServerRouteCache serverRouteCache;
+
     public void subscribeEvent(String path) {
         zkClient.subscribeChildChanges(path, new IZkChildListener() {
             @Override
             public void handleChildChange(String parentPath, List<String> list) throws Exception {
-                // to do
-                // update cache info
+                serverRouteCache.updateCache(list);
             }
         });
     }
